@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+#comentario para ver si funciona el pr
 var speed = 100
 var player_state 
 @export var inv: Inv
