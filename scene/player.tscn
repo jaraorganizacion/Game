@@ -336,13 +336,6 @@ animation = &"w-attack"
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_0a317")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-limit_left = -399
-limit_top = -232
-limit_right = 433
-limit_bottom = 275
-
 [node name="Inv_UI" parent="." instance=ExtResource("3_fvtld")]
 offset_left = -42.0
 offset_top = -79.0
