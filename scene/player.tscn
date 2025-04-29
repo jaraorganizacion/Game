@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bxkt7twxd8ei0"]
+[gd_scene load_steps=39 format=3 uid="uid://bxkt7twxd8ei0"]
 
 [ext_resource type="Script" uid="uid://cgqwxo15p0xsw" path="res://script/player.gd" id="1_hjaqi"]
 [ext_resource type="Texture2D" uid="uid://b3fe62bc2cdhh" path="res://art/character/survivalgame-player-green.png" id="2_fvtld"]
@@ -47,6 +47,10 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4iqv"]
 atlas = ExtResource("2_fvtld")
 region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvtld"]
+atlas = ExtResource("2_fvtld")
+region = Rect2(0, 192, 35, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iuf2t"]
 atlas = ExtResource("2_fvtld")
@@ -186,6 +190,14 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvtld")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -330,7 +342,8 @@ script = ExtResource("1_hjaqi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5nkdk")
-animation = &"w-attack"
+animation = &"idle_left"
+frame_progress = 0.571729
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)

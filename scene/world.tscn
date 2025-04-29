@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c31nc8uq0ypj0"]
+[gd_scene load_steps=20 format=3 uid="uid://c31nc8uq0ypj0"]
 
 [ext_resource type="Script" uid="uid://b8qu8y6g6etdn" path="res://script/world.gd" id="1_na5tu"]
 [ext_resource type="PackedScene" uid="uid://bxkt7twxd8ei0" path="res://scene/player.tscn" id="1_pjass"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://nw5nw4bs7hms" path="res://art/environment/exterior.png" id="6_f345f"]
 [ext_resource type="PackedScene" uid="uid://qyag2rmw0gbl" path="res://scene/stick_collectable.tscn" id="8_y3jn2"]
 [ext_resource type="PackedScene" uid="uid://b40vhscwks7jg" path="res://script/slime.tscn" id="9_yur6x"]
+[ext_resource type="PackedScene" uid="uid://br874hofvp4p4" path="res://scene/npc_guns.tscn" id="12_jsnws"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hcb8y"]
 texture = ExtResource("2_m5mgf")
@@ -466,5 +467,8 @@ position = Vector2(-283, -38)
 [node name="collisionShape" type="CollisionShape2D" parent="entrar_house"]
 position = Vector2(391, -45)
 shape = SubResource("CircleShape2D_jsnws")
+
+[node name="npc_guns" parent="." instance=ExtResource("12_jsnws")]
+position = Vector2(327, 5)
 
 [connection signal="body_entered" from="entrar_house" to="." method="_on_entrar_house_body_entered"]
