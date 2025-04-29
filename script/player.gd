@@ -9,10 +9,7 @@ var bow_cooldown = true
 var arrow = preload("res://scene/arrow.tscn")
 var mouse_loc_from_player = null
 
-#la vida
-var max_health = 100
-var current_health = 100
-@onready var health_bar = $CanvasLayer/ProgressBar  # ajusta la ruta a tu nodo
+
 
 func _physics_process(delta):
 	mouse_loc_from_player = get_global_mouse_position() - self.position
@@ -96,16 +93,7 @@ func collect(item):
 	inv.insert(item)			
 			
 
-func _ready():
-	update_health_bar()
-	
-func take_damage(amount: int):
-	current_health -= amount
-	current_health = clamp(current_health, 0, max_health)
-	update_health_bar()
 
-func update_health_bar():
-	health_bar.value = current_health
 			
 			
 			
