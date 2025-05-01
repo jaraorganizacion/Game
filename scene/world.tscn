@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c31nc8uq0ypj0"]
+[gd_scene load_steps=21 format=3 uid="uid://c31nc8uq0ypj0"]
 
 [ext_resource type="Script" uid="uid://b8qu8y6g6etdn" path="res://script/world.gd" id="1_na5tu"]
 [ext_resource type="PackedScene" uid="uid://bxkt7twxd8ei0" path="res://scene/player.tscn" id="1_pjass"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://nw5nw4bs7hms" path="res://art/environment/exterior.png" id="6_f345f"]
 [ext_resource type="PackedScene" uid="uid://qyag2rmw0gbl" path="res://scene/stick_collectable.tscn" id="8_y3jn2"]
 [ext_resource type="PackedScene" uid="uid://b40vhscwks7jg" path="res://script/slime.tscn" id="9_yur6x"]
+[ext_resource type="PackedScene" uid="uid://c5htfbopfmqhq" path="res://scene/progress_bar.tscn" id="11_f345f"]
 [ext_resource type="PackedScene" uid="uid://br874hofvp4p4" path="res://scene/npc_guns.tscn" id="12_jsnws"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hcb8y"]
@@ -447,6 +448,12 @@ limit_left = -399
 limit_top = -232
 limit_right = 433
 limit_bottom = 275
+
+[node name="ProgressBar" parent="player" instance=ExtResource("11_f345f")]
+offset_left = -12.0
+offset_top = 13.0
+offset_right = 10.0
+offset_bottom = 18.0
 
 [node name="collisions" type="StaticBody2D" parent="."]
 

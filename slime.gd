@@ -1,10 +1,13 @@
 extends CharacterBody2D
 
 var speed = 50
-var health = 100
+var max_health = 100
+var health = max_health
+
 
 @onready var slime = $slime_collectable
 @export var itemRes: InvItem
+@onready var health_bar = $ProgressBar
 
 var dead = false
 var player_in_area = false
@@ -38,6 +41,7 @@ func _on_detection_area_body_entered(body):
 func _on_detection_area_body_exited(body):
 	if body.has_method("player"):
 		player_in_area = false
+		player = null
 
 
 func _on_hitbox_area_entered(area):
@@ -48,7 +52,16 @@ func _on_hitbox_area_entered(area):
 
 
 func take_damage(damage):
-	health = health - damage
+	#health = health - damage
+	#if health <= 0 and !dead:
+		#death()
+		
+	health -= damage
+	health = clamp(health, 0, max_health)
+	
+	# Actualiza la barra
+	health_bar.value = health
+
 	if health <= 0 and !dead:
 		death()
 		
@@ -63,16 +76,28 @@ func death():
 	$hitbox/CollisionShape2D.disabled = true
 	$detection_area/CollisionShape2D.disabled = true
 	
+	
+
+	
+	
 func drop_slime():
 	slime.visible = true
 	$slime_collect_area/CollisionShape2D.disabled = false
 	slime_collect()
 	
+	
 func slime_collect():
 	await get_tree().create_timer(1.5).timeout
 	slime.visible = false
-	player.collect(itemRes)
+	
+	# Verifica que el jugador esté presente antes de llamar a collect
+	if player != null:
+		# Si 'player' tiene el método 'collect', lo llamamos
+		if player.has_method("collect"):
+			player.collect(itemRes)
 	queue_free()
+
+	
 
 
 func _on_slime_collect_area_body_entered(body):

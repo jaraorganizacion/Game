@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://b40vhscwks7jg"]
+[gd_scene load_steps=30 format=3 uid="uid://b40vhscwks7jg"]
 
 [ext_resource type="Script" uid="uid://dos1tmh1hb1ni" path="res://slime.gd" id="1_mhv5m"]
 [ext_resource type="Resource" uid="uid://dsuraoq0f4sav" path="res://inventory/items/slime.tres" id="2_245be"]
 [ext_resource type="Texture2D" uid="uid://de21vt7japl74" path="res://art/character/survivalgame-enemy-slime.png" id="2_ydx6a"]
 [ext_resource type="PackedScene" uid="uid://cl07ysu70fyvb" path="res://script/slime_collectable.tscn" id="3_ydx6a"]
+[ext_resource type="PackedScene" uid="uid://c5htfbopfmqhq" path="res://scene/progress_bar.tscn" id="5_csdaw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_245be"]
 atlas = ExtResource("2_ydx6a")
@@ -160,14 +161,17 @@ radius = 48.0937
 [sub_resource type="CircleShape2D" id="CircleShape2D_245be"]
 radius = 108.784
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1fll"]
+bg_color = Color(0.249687, 0.654096, 0.78252, 1)
+
 [node name="slime" type="CharacterBody2D"]
 script = ExtResource("1_mhv5m")
 itemRes = ExtResource("2_245be")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_napfy")
-animation = &"death"
-frame_progress = 0.481046
+animation = &"move"
+frame_progress = 0.673828
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3x0vq")
@@ -190,6 +194,13 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slime_collect_area"]
 shape = SubResource("CircleShape2D_245be")
 disabled = true
+
+[node name="ProgressBar" parent="." instance=ExtResource("5_csdaw")]
+offset_left = -24.0
+offset_top = 16.0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_q1fll")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
