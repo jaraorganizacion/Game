@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c31nc8uq0ypj0"]
+[gd_scene load_steps=22 format=3 uid="uid://c31nc8uq0ypj0"]
 
 [ext_resource type="Script" uid="uid://b8qu8y6g6etdn" path="res://script/world.gd" id="1_na5tu"]
 [ext_resource type="PackedScene" uid="uid://bxkt7twxd8ei0" path="res://scene/player.tscn" id="1_pjass"]
@@ -405,6 +405,9 @@ sources/7 = SubResource("TileSetAtlasSource_7ghph")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jsnws"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_f345f"]
+radius = 15.0333
+
 [node name="world" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_na5tu")
@@ -461,7 +464,7 @@ offset_bottom = 18.0
 polygon = PackedVector2Array(26, -92, 25, -240, 440, -239, 439, 207, 189, 210, 40, 200, 39, 278, -2, 279, -2, 199, -74, 200, -400, 207, -400, 78, -360, 78, -356, 141, -338, 153, -180, 153, -164, 135, -166, 119, -151, 119, -152, 134, -144, 147, -138, 153, -101, 152, -85, 135, -86, 18, -105, 3, -255, 3, -275, 19, -275, 96, -258, 114, -243, 114, -238, 120, -200, 120, -200, 129, -326, 129, -324, 62, -346, 45, -400, 44, -400, -241, -346, -240, -345, -87, 16, -86, -1, -262, -178, -292, -447, -245, -476, -89, -533, 345, -300, 403, 18, 397, 400, 378, 608, 209, 673, -2, 613, -311, 439, -354, 2, -342, 13, -241, 20, -88)
 
 [node name="slime" parent="." instance=ExtResource("9_yur6x")]
-position = Vector2(34, 120)
+position = Vector2(1, 81)
 
 [node name="slime2" parent="." instance=ExtResource("9_yur6x")]
 position = Vector2(156, -13)
@@ -478,4 +481,12 @@ shape = SubResource("CircleShape2D_jsnws")
 [node name="npc_guns" parent="." instance=ExtResource("12_jsnws")]
 position = Vector2(327, 5)
 
+[node name="portal" type="Area2D" parent="."]
+position = Vector2(6, 8)
+
+[node name="traslate" type="CollisionShape2D" parent="portal"]
+position = Vector2(13, 268)
+shape = SubResource("CircleShape2D_f345f")
+
 [connection signal="body_entered" from="entrar_house" to="." method="_on_entrar_house_body_entered"]
+[connection signal="body_entered" from="portal" to="." method="_on_portal_body_entered"]
