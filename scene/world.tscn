@@ -495,5 +495,12 @@ position = Vector2(6, 8)
 position = Vector2(14, 257)
 shape = SubResource("CircleShape2D_f345f")
 
+[node name="Label" type="Label" parent="."]
+offset_left = 114.0
+offset_top = 128.0
+offset_right = 281.0
+offset_bottom = 151.0
+text = "ESTO ES UNA PRUEBA"
+
 [connection signal="body_entered" from="entrar_house" to="." method="_on_entrar_house_body_entered"]
 [connection signal="body_entered" from="portal" to="." method="_on_portal_body_entered"]
