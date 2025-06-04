@@ -1,8 +1,9 @@
-[gd_scene load_steps=39 format=3 uid="uid://bxkt7twxd8ei0"]
+[gd_scene load_steps=40 format=3 uid="uid://bxkt7twxd8ei0"]
 
 [ext_resource type="Script" uid="uid://cgqwxo15p0xsw" path="res://script/player.gd" id="1_hjaqi"]
 [ext_resource type="Texture2D" uid="uid://b3fe62bc2cdhh" path="res://art/character/survivalgame-player-green.png" id="2_fvtld"]
 [ext_resource type="PackedScene" uid="uid://0jia4b274u7r" path="res://inventory/inv_ui.tscn" id="3_fvtld"]
+[ext_resource type="PackedScene" uid="uid://c5htfbopfmqhq" path="res://scene/progress_bar.tscn" id="4_ct4mp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ct4mp"]
 atlas = ExtResource("2_fvtld")
@@ -342,8 +343,7 @@ script = ExtResource("1_hjaqi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5nkdk")
-animation = &"idle_left"
-frame_progress = 0.571729
+animation = &"e-attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -356,3 +356,9 @@ offset_right = 42.0
 offset_bottom = -15.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="ProgressBar" parent="." instance=ExtResource("4_ct4mp")]
+offset_left = -9.0
+offset_top = 10.0
+offset_right = 6.0
+offset_bottom = 13.0

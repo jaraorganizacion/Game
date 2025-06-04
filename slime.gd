@@ -1,5 +1,11 @@
 extends CharacterBody2D
 
+var damage := 10  # Cuánto daño hace el slime
+var damage_cooldown := 1.0
+var can_deal_damage := true
+
+
+
 var speed = 50
 var max_health = 100
 var health = max_health
@@ -15,6 +21,15 @@ var player
 
 func _ready():
 	dead = false
+	
+	
+func _on_damage_area_body_entered(body):
+	if body.is_in_group("player") and can_deal_damage:
+		if body.has_method("take_damage_player"):
+			body.take_damage_player(damage)
+			can_deal_damage = false
+			await get_tree().create_timer(damage_cooldown).timeout
+			can_deal_damage = true
 
 func _physics_process(delta):
 	if !dead:

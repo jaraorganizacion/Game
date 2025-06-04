@@ -1,6 +1,8 @@
 extends CharacterBody2D
-#comentario para ver si funciona el pr
+
 var speed = 100
+
+
 var player_state 
 @export var inv: Inv
 
@@ -9,11 +11,12 @@ var bow_cooldown = true
 var arrow = preload("res://scene/arrow.tscn")
 var mouse_loc_from_player = null
 
+	
 
 
 func _physics_process(delta):
 	mouse_loc_from_player = get_global_mouse_position() - self.position
-	print(mouse_loc_from_player)
+	#print(mouse_loc_from_player)
 	var direction = Input.get_vector("left","right","up","down")
 	if direction.x == 0 and direction.y == 0:
 		player_state = "idle"
@@ -90,7 +93,10 @@ func player():
 	pass	
 
 func collect(item):
-	inv.insert(item)			
+	inv.insert(item)
+
+
+
 			
 
 			
