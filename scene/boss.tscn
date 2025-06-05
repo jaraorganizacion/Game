@@ -113,7 +113,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"cleave",
-"speed": 8.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -280,10 +280,10 @@ radius = 26.1725
 bg_color = Color(0.212722, 0.657036, 0.80039, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sc60x"]
-radius = 91.022
+radius = 206.022
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f6o1c"]
-radius = 33.0151
+radius = 23.0217
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fu5kf"]
 radius = 69.1158
@@ -298,7 +298,8 @@ script = ExtResource("1_i7d2d")
 position = Vector2(29.875, 5)
 scale = Vector2(0.480035, 0.5875)
 sprite_frames = SubResource("SpriteFrames_7qqua")
-animation = &"death"
+animation = &"take_hit"
+frame_progress = 0.976873
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(30, 30)

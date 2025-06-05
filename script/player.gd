@@ -10,6 +10,9 @@ var bow_equiped = false
 var bow_cooldown = true
 var arrow = preload("res://scene/arrow.tscn")
 var mouse_loc_from_player = null
+var max_health = 100 
+var health = max_health  
+
 
 	
 
@@ -96,7 +99,27 @@ func collect(item):
 	inv.insert(item)
 
 
+# Método para recibir daño
+func take_damage_player(damage):
+	health -= damage
+	health = clamp(health, 0, max_health)  # Limita la salud entre 0 y la salud máxima
+	
+	# Actualiza la barra de salud usando el nodo de la barra de vida directamente
+	$ProgressBar.value = health  # Suponiendo que el nodo se llama ProgressBar
 
+	# Si la salud llega a 0, el jugador muere
+	if health <= 0:
+		death()
+
+
+
+func death():
+	$AnimatedSprite2D.play("death")
+	$AnimatedSprite2D.visible = false
+	await get_tree().create_timer(1).timeout
+	$AnimatedSprite2D.visible = false
+	
+	
 			
 
 			

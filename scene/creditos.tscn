@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://c04t1maja3bom"]
+
+[ext_resource type="Script" uid="uid://dnubp2k4o3rte" path="res://script/creditos.gd" id="1_n25ib"]
+[ext_resource type="Texture2D" uid="uid://dbdxl6yucfgd1" path="res://fondo.jpg" id="1_njlfq"]
+[ext_resource type="Texture2D" uid="uid://g37avq0i0ofu" path="res://art/GUI.png" id="2_2bq7n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n25ib"]
+texture = ExtResource("2_2bq7n")
+region_rect = Rect2(113, 98, 30, 13)
+
+[node name="creditos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n25ib")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 1154.0
+offset_bottom = 648.0
+texture = ExtResource("1_njlfq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 66.0
+offset_right = 1139.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 61
+text = "Universidad Nacional Casimiro Sotelo"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 298.0
+offset_top = 212.0
+offset_right = 862.0
+offset_bottom = 541.0
+theme_override_font_sizes/font_size = 40
+text = "         Juego realizado por 
+
+                    Juan Jara
+               Darwin Yassir
+                Joyner Jaime"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 589.0
+offset_right = 98.0
+offset_bottom = 644.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_n25ib")
+text = " Return "
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
